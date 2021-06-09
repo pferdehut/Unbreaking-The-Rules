@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Unbreaking the Rules</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header><h1 id="headTitle" class="front">It's about Unbreaking<br>The Rules</h1></header>
+<div id="ga" class="active">
+  <div class="nav">
+	<div class="toolbox">Toolbox</div>
+	<div id="gaSelection" class="selection">
+	</div>
+  </div>
+  <div class="content">
+ 	<div id="gaCanvas" class="canvas"></div>
+  	<button id="zurGestik" class="disabled" onClick="gestik()">Wähle dein Tool</button>
+  </div>
+  <div id="overlay" class="overlay" onClick="off()">
+  <div class="popup">
+	<div class="close">X</div>
+	<h2>Generative Gestaltung</h2>
+	<span>Die Verwendung von Computern in der <em>Generativen Gestaltung</em> ermöglicht es Gestalter:innen innerhalb von kürzester Zeit – mit eigenen künstlerisch vorgegebenen Regeln – Tausende von Resultaten zu erzeugen. Durch diese Methode können neue Ästhetiken und Ideen entstehen. Oft stolpert man dadurch sogar über glückliche Zufälle. Serendipität ist dabei aber nicht der einzige Zufallsaspekt – sowohl konzeptionell wie auch technisch ist der Zufall in der <em>Generativen Gestaltung</em> essentiell.</span>
+  </div>
+  </div>
+  <div id="text" class="overlay">
+  <div class="popup">
+	<div class="close" onClick="offText()">X</div>
+	<h2>Welches Wort willst du auf deinem Poster?</h2>
+	<input name="textinput" id="textinput" pattern="[A-Za-z0-9]+" maxlength="10" placeholder="Max. 10 Zeichen">
+  	<div id="buttonContainer"></div>
+  </div>
+  </div>
+</div>
+<div id="gestik">
+  <div class="nav">
+	<div class="toolbox">Toolbox</div>
+	<div id="ggSelection" class="selection">
+		<button id="zeichnen" title="Zeichne mit deiner Maus – Maustaste geklickt"><svg viewBox="0 0 500 500"><polygon points="272.081,18.148 227.919,18.148 227.919,252.4 167.019,280.104 332.981,280.104 272.081,252.4 "  stroke="black" stroke-width="4" fill="white" /><rect x="167.019" y="384.978" width="165.961" height="96.874"/><rect x="152.929" y="280.104" width="194.141" height="104.874" stroke="black" stroke-width="4" fill="white" /></svg></button>
+		<button id="foto" title="Zeichne mit deiner Handbewegung – Kamera startet"><svg viewBox="0 0 500 500"><rect x="28.879" y="108.644" width="442.241" height="282.711" stroke="black" stroke-width="4" fill="white" /><circle cx="250" cy="250" r="86.556"  stroke="black" stroke-width="4" fill="white" /><rect x="336.556" y="62.222" width="95.604" height="46.422" stroke="black" stroke-width="4" fill="white" /></svg><div id="timeCount"></div></button>
+	</div>
+  </div>
+  <div class="content">
+	<div class="counter"></div>
+  	<div id="gestikCanvas" class="canvas"></div>
+  	<button id="finalStep" class="disabled" onClick="verfremdung()">Wähle dein Tool</button>
+  </div>
+  <div id="overlay2" class="overlay" onClick="off2()">
+  <div class="popup">
+	<div class="close">X</div>
+	<h2>Gestische Gestaltung</h2>
+	  <span>Der Begriff <em>Gestische Gestaltung</em> bezieht sich auf die Art und Weise wie Werke hergestellt werden. Dabei steht der Prozess, der in einer Art Ganzkörper-Performance durchgeführt wird, im Mittelpunkt. Das visuelle Ergebnis spielt in der <em>Gestischen Gestaltung</em> eine sekundäre Rolle. Durch den Einsatz des eigenen Körpers, wenn man die Performance perfektioniert, kann das Material im Sinne einer bewussten Zufälligkeit eingesetzt werden.</span>
+  </div>
+  </div>
+</div>
+<div id="verfremdung">
+  <div id="lastNav" class="nav">
+  	<div class="selection">
+		<button onClick="window.location.reload();" id="redo"><svg viewBox="0 0 500 500"><path d="M43.2,212.9C63.6,98.8,172.6,23.2,286.7,43.6c86.3,15.6,153.8,83,169.3,169.3"  stroke="black" stroke-width="4" fill="none" /><path d="M456,287.1c-20.4,114.1-129.3,189.7-243.4,169.3c-86.3-15.6-153.8-83-169.3-169.3"  stroke="black" stroke-width="4" fill="none" /><polyline points="409.7,294.5 454.9,250 499.4,295.2"  stroke="none" stroke-width="4" fill="black" /><polyline points="0.6,205.2 45.1,250 90.3,205.2" stroke="none" stroke-width="4" fill="black" /></svg></button>
+	</div>
+  </div>
+  <div class="content">
+  	<div id="finalCanvas" class="canvas"></div>
+  	<button id="savePDF" onClick="save()">Download</button>
+  </div>
+  <div id="overlay3" class="overlay" onClick="off3()">
+  <div class="popup">
+	<div class="close">X</div>
+	<h2>Verfremdung</h2>
+	<span>Ist man im Designprozess dem Punkt angelangt, an dem bereits visuelle Outputs vorhanden sind – sei das mittels Aneignung oder selbst generierten Resultaten – können durch <em>Verfremdung</em> neue Bildwelten generiert werden. Diese Strategie hat besonders im heutigen digitalen Zeitalter grosses Potential, da wir in allen Lebensbereichen von massenhaftem Bildmaterial überschwemmt werden. Durch die <em>Verfremdung</em> von bewegten und unbewegten Bildern, kann diese Überflutung zu etwas Positivem umgewandelt werden.</span>
+  </div>
+  </div>
+</div>
+<div id="bg" class="active">
+  <svg viewBox="0 0 500 500" preserveAspectRatio="meet">
+    <path style="stroke:none; fill:rgba(255, 0, 0, 1);">
+	  <animate repeatCount="indefinite" dur="6s" attributeName="d" values="M500,250c0,34.518-21.799,86.317-21.799,86.317
+		c-22.603,53.44-7.002,110.896-58.066,137.7C385.459,492.219,291.88,500,250,500c-44.983,0-136.819-8.507-173.286-29.301
+		c-43.394-24.745-24.318-81.097-46.453-126.087C13.902,311.362,0,289.56,0,250c0-44.255,1.793-134.776,21.966-170.834
+		c21.382-38.221,105.127-26.887,142.636-49.361S203.092,0,250,0c64.343,0,87.671,9.371,131.977,49.303
+		C432.747,95.061,500,176.271,500,250z; M500,250c0,34.518-13.967,33.44-26.618,63.349
+		c-22.603,53.44-25.748,85.604-76.812,112.408C361.895,443.959,291.88,500,250,500c-44.983,0-94.236-29.093-130.703-49.888
+		c-43.394-24.745-75.285-16.834-97.42-61.824C5.518,355.038,0,289.56,0,250c0-44.255,7.325-102.927,27.498-138.985
+		c21.382-38.221,80.519-46.844,118.028-69.318S203.092,0,250,0c64.343,0,130.366,63.589,174.672,103.521
+		C475.442,149.279,500,176.271,500,250z; M500,250c0,34.518-21.799,86.317-21.799,86.317
+		c-22.603,53.44-7.002,110.896-58.066,137.7C385.459,492.219,291.88,500,250,500c-44.983,0-136.819-8.507-173.286-29.301
+		c-43.394-24.745-24.318-81.097-46.453-126.087C13.902,311.362,0,289.56,0,250c0-44.255,1.793-134.776,21.966-170.834
+		c21.382-38.221,105.127-26.887,142.636-49.361S203.092,0,250,0c64.343,0,87.671,9.371,131.977,49.303
+		C432.747,95.061,500,176.271,500,250z"/>
+    </path>
+  </svg>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

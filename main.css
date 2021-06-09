@@ -1,0 +1,331 @@
+@font-face {
+  font-family: 'Muli', sans-serif;
+  src: url("font/Mulish-VariableFont_wght.ttf"); }
+/* line 25, main.scss */
+html, body {
+  height: 100%; }
+
+/* line 29, main.scss */
+body {
+  font-family: "Muli", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 1em;
+  line-height: 1.2;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #ffffff; }
+
+/* line 43, main.scss */
+body > div {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+/* line 51, main.scss */
+body > div > div {
+  position: absolute;
+  opacity: 0;
+  box-sizing: border-box; }
+
+/* line 57, main.scss */
+body > div > .nav {
+  opacity: 0; }
+
+/* line 61, main.scss */
+body > div.active > div {
+  opacity: 1; }
+
+/* line 65, main.scss */
+body > div.active {
+  z-index: 9; }
+
+/* line 69, main.scss */
+body > div.active.done {
+  z-index: 1; }
+
+/* line 73, main.scss */
+div.active.done .nav, div.active.done .content button {
+  display: none; }
+
+/* line 77, main.scss */
+.nav {
+  width: 15%;
+  max-width: 70px;
+  z-index: 2;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%); }
+
+/* line 86, main.scss */
+.content {
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 7.5%; }
+
+/* line 93, main.scss */
+div.active.done .content .canvas {
+  transform: translate(1.5%, 1.5%); }
+
+/* line 97, main.scss */
+div.active.doneG .content .canvas {
+  transform: translate(3%, 3%); }
+
+/* line 101, main.scss */
+img {
+  max-width: 100%;
+  max-height: 100%; }
+
+/* line 106, main.scss */
+h2 {
+  font-weight: 400;
+  font-size: 3vw;
+  margin-bottom: 1.5%;
+  margin-top: 0; }
+
+/* line 113, main.scss */
+.selection {
+  border: 1px solid;
+  border-right: 0;
+  padding: 1% 0 1% 1%; }
+
+/* line 119, main.scss */
+button {
+  padding: 10%;
+  margin: 0;
+  cursor: pointer;
+  background: #ffffff;
+  border: 0; }
+
+/* line 127, main.scss */
+button svg {
+  width: 100%;
+  height: 100%; }
+
+/* line 132, main.scss */
+button:hover {
+  background: #000000;
+  color: #ffffff; }
+
+/* line 137, main.scss */
+button:hover svg {
+  filter: invert(100%); }
+
+/* line 141, main.scss */
+.content button, .popup button {
+  padding: 0;
+  width: 30%;
+  margin: 1.5% auto 0 auto;
+  border: 1px solid #000000;
+  font-size: 3vw; }
+
+/* line 149, main.scss */
+.popup button {
+  width: auto;
+  margin: 5% auto 0 auto;
+  display: block;
+  padding: 0 1.5%; }
+
+/* line 156, main.scss */
+header h1 {
+  max-width: 700px;
+  font-size: 6vw;
+  font-weight: 800;
+  padding: 1.5%;
+  text-align: left;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  z-index: 6;
+  line-height: 0.9;
+  color: blue;
+  mix-blend-mode: multiply; }
+
+/* line 173, main.scss */
+header h1.front {
+  mix-blend-mode: none;
+  z-index: 10; }
+
+/* line 178, main.scss */
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 5; }
+
+/* line 187, main.scss */
+.popup {
+  position: absolute;
+  width: 50%;
+  background: white;
+  height: auto;
+  padding: 1.5%;
+  border: 1px solid;
+  left: 50%;
+  top: 7.5%;
+  transform: translate(-51.5%, -1.5%);
+  -ms-transform: translate(-51.5%, -1.5%);
+  text-align: left;
+  width: 30vw;
+  height: calc(30vw * 1.41);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  box-sizing: border-box; }
+
+/* line 207, main.scss */
+.popup .close {
+  font-size: 3vw;
+  position: absolute;
+  right: 3%;
+  top: 3%; }
+
+/* line 214, main.scss */
+.popup h2 {
+  width: 95%; }
+
+/* line 218, main.scss */
+#text {
+  display: none; }
+
+/* line 222, main.scss */
+.canvas {
+  width: 30vw;
+  height: calc(30vw * 1.41);
+  border: 1px solid #000000;
+  background: #ffffff;
+  margin: 0 auto 1.5% auto;
+  box-shadow: 15px 15px 15px -15px #000000; }
+
+/* line 231, main.scss */
+input {
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Muli", sans-serif;
+  font-size: 3vw;
+  color: #000000;
+  border: 1px solid #000000;
+  background: #ffffff;
+  box-shadow: 15px 15px 15px -15px #000000; }
+
+/* line 243, main.scss */
+#bg {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%; }
+
+/* line 252, main.scss */
+#bg svg {
+  height: 100%;
+  width: 100%; }
+
+/* line 257, main.scss */
+.disabled {
+  pointer-events: none; }
+
+/* line 261, main.scss */
+#ggSelection button {
+  pointer-events: auto; }
+
+/* line 265, main.scss */
+.toolbox {
+  font-size: 0.8em;
+  font-weight: lighter;
+  /*transform: rotate(90deg);
+  position: absolute;
+  left: -30px;
+  top: 50%;*/
+  text-align: left; }
+
+/* line 275, main.scss */
+#foto.hide svg {
+  opacity: 0; }
+
+/* line 279, main.scss */
+#foto #timeCount {
+  display: none;
+  margin-top: -52px;
+  font-size: 3vw; }
+
+/* line 285, main.scss */
+#foto.hide #timeCount {
+  display: block; }
+
+/*.navLast{
+	width: 30vw;
+    margin: 1.2% auto 0 auto;
+}
+
+#redo{
+	width: 15%;
+    margin: 0;
+    background: none;
+    border: none;
+    margin-bottom: -100px;
+    display: block;
+    float: right;
+}
+
+#savePDF{
+	width: 80%;
+    margin: 0;
+    display: block;
+    float: left;
+}*/
+@media only screen and (max-width: 850px) {
+  /* line 312, main.scss */
+  .canvas {
+    width: 50vw;
+    height: calc(50vw * 1.41); }
+
+  /* line 317, main.scss */
+  h2, .content button, .popup button, input, .popup .close, #foto #timeCount {
+    font-size: 4.5vw; }
+
+  /* line 321, main.scss */
+  .content button, .popup button {
+    width: 50vw; }
+
+  /* line 325, main.scss */
+  header h1 {
+    font-size: 9vw; }
+
+  /* line 329, main.scss */
+  .popup {
+    width: 75%; } }
+@media only screen and (max-width: 576px) {
+  /* line 335, main.scss */
+  .canvas {
+    width: 75vw;
+    height: calc(75vw * 1.41); }
+
+  /* line 340, main.scss */
+  h2, .content button, .popup button, input, .popup .close, #foto #timeCount {
+    font-size: 6vw; }
+
+  /* line 344, main.scss */
+  .content button, .popup button {
+    width: 75vw; }
+
+  /* line 348, main.scss */
+  header h1 {
+    font-size: 12vw; }
+
+  /* line 352, main.scss */
+  .popup {
+    width: 94%; } }
+
+/*# sourceMappingURL=main.css.map */
