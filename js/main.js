@@ -1,4 +1,14 @@
 // JavaScript Document
+let ggC;
+let gaC;
+let finalC;
+var cameraI = false;
+let print = false;
+let printW = 842;
+let printH = 1191;
+let rC;
+let colorOne, colorTwo;
+
 function off() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("headTitle").classList.remove("front");
@@ -17,29 +27,6 @@ function off3() {
   document.getElementById("overlay3").style.display = "none";
   document.getElementById("headTitle").classList.remove("front");
 }
-
-function gestik() {
-  document.getElementById("ga").classList.add("done");
-  document.getElementById("headTitle").classList.add("front");
-  document.getElementById("gestik").classList.add("active");
-}
-
-function verfremdung() {
-  document.getElementById("gestik").classList.add("done");
-  document.getElementById("headTitle").classList.add("front");
-  document.getElementById("ga").classList.add("doneG");
-  document.getElementById("verfremdung").classList.add("active");
-}
-
-let ggC;
-let gaC;
-let finalC;
-let cameraI = false;
-let print = false;
-let printW = 842;
-let printH = 1191;
-let rC;
-let colorOne, colorTwo;
 
 let gA = function(p) {
   var canvasDiv = document.getElementById("gaCanvas");
@@ -237,7 +224,7 @@ const firstSketch = ( p ) => {
     state = p.createGraphics(container.offsetWidth-4, container.offsetHeight-4);
     camera = p.createCapture(p.VIDEO);
     camera.size(container.offsetWidth-4, container.offsetHeight-4);
-     camera.hide();
+    camera.hide();
 	const exportButton = document.getElementById("finalStep");
 	exportButton.addEventListener(('click'), () => {
       print = true;
@@ -336,8 +323,13 @@ const firstSketch = ( p ) => {
 		
 };
 
-// initialize with container
-const first = new p5(firstSketch, container);
+function gestik() {
+  document.getElementById("ga").classList.add("done");
+  document.getElementById("headTitle").classList.add("front");
+  document.getElementById("gestik").classList.add("active");
+  const first = new p5(firstSketch, container);
+}
+
 
 let final = function(p) {
   var canvasDiv = document.getElementById("gaCanvas");
@@ -375,4 +367,10 @@ let final = function(p) {
 
 };
 
-let combined = new p5(final);
+function verfremdung() {
+  document.getElementById("gestik").classList.add("done");
+  document.getElementById("headTitle").classList.add("front");
+  document.getElementById("ga").classList.add("doneG");
+  document.getElementById("verfremdung").classList.add("active");
+  let combined = new p5(final);
+}
